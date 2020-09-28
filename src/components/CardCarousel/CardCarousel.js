@@ -6,7 +6,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import IconButton from '@material-ui/core/IconButton';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   carousel: {
@@ -21,31 +20,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CardCarousel = ({ daily, dayOfWeek }) => {
-  const theme = useTheme();
   const classes = useStyles();
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const [amountOfCard, setAmountOfCard] = useState(0);
 
-  const xsMin = useMediaQuery('(max-width:360px)');
-  const xs = useMediaQuery('(max-width:520px)');
-  const smMd = useMediaQuery('(max-width:700px)');
-  const sm = useMediaQuery('(max-width:900px)');
-  const md = useMediaQuery('(max-width:1030px)');
-  const mdMax = useMediaQuery(theme.breakpoints.down('lg'));
-  const xl = useMediaQuery(theme.breakpoints.up('lg'));
-
-  // const mobileDevice = useMediaQuery(theme => theme.breakpoints.up('sm'));
-  // using this method an error is issued: Cannot read property 'breakpoints' of null
+  const xs = useMediaQuery(theme => theme.breakpoints.down('xs'));
+  const sm = useMediaQuery(theme => theme.breakpoints.down('sm'));
 
   useEffect(() => {
     setAmountOfCard(
-      xsMin ? 1 :
-        xs ? 2 :
-          smMd ? 3 :
-            sm ? 4 :
-              (md || mdMax || xl ) ? 5 : 6
+      xs ? 2 :
+        sm ? 3 : 5
     )
-  }, [xs, sm, md, xsMin, smMd, mdMax, xl]);
+  }, [xs, sm]);
 
   return (
     <div className={classes.carousel}>
@@ -63,6 +50,7 @@ const CardCarousel = ({ daily, dayOfWeek }) => {
             <ChevronRightIcon />
           </IconButton>
         }
+        gutter={20}
         outsideChevron={false}
       >
         {daily.map((day, index) => (

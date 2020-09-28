@@ -3,7 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import WeatherWidget from './components/WeatherWidget/WeatherWidget';
 import image from './images/weather-background.jpg';
 import { Grid, Paper } from '@material-ui/core';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import axios from 'axios';
+
+const theme = createMuiTheme({});
 
 const useStyles = makeStyles((theme) => ({
   app: {
@@ -50,7 +53,8 @@ function App() {
   );
 
   return (
-    <div className={classes.app}>
+    <ThemeProvider theme={theme}>
+      <div className={classes.app}>
       <Grid container justify="center">
         <Grid item xs={12} sm={12} md={12} lg={8}>
           <Paper className={classes.weatherWidgetBody}>
@@ -59,6 +63,8 @@ function App() {
         </Grid>
       </Grid>
     </div>
+    </ThemeProvider>
+    
   );
 }
 
