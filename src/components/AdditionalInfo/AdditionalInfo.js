@@ -52,7 +52,7 @@ const AdditionalInfo = ({ currentDayInfo }) => {
           {currentDayInfo.feelsLike} &#176; C
         </Typography>
         <Typography variant='body1'>
-          {currentDayInfo.preasure}
+          {(currentDayInfo.preasure).toString()}
         </Typography>
         <Typography variant='body1'>
           {currentDayInfo.humidity}%
