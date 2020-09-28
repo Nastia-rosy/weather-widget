@@ -13,10 +13,10 @@ const useStyles = makeStyles((theme) => ({
     width: 120,
   },
   media: {
-    display: 'inline-block',
+    display: 'block',
     width: 80,
     height: 80,
-    textAlign: 'center'
+    margin: '0 auto'
   },
   weatherDescription: {
     borderBottom: '1px solid #fff',
