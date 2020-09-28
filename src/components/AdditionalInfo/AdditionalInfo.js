@@ -16,7 +16,7 @@ const AdditionalInfo = ({ currentDayInfo }) => {
   return (
     <Grid container>
       <Hidden smUp>
-        <Grid xs={12}>
+        <Grid item xs={12}>
           <Typography variant='h4' className={classes.dayOfWeek}>
             {currentDayInfo.dayOfWeek}
           </Typography>

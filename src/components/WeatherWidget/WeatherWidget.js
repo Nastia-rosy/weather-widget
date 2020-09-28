@@ -1,15 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Typography } from '@material-ui/core';
 import CardMedia from '@material-ui/core/CardMedia';
-// import WeatherCard from '../WeatherCard/WeatherCard';
 import AdditionalInfo from '../AdditionalInfo/AdditionalInfo';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-// import ItemsCarousel from 'react-items-carousel';
-// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-// import IconButton from '@material-ui/core/IconButton';
-// import useMediaQuery from '@material-ui/core/useMediaQuery';
 import CardCarousel from '../CardCarousel/CardCarousel'
 
 
@@ -56,9 +50,9 @@ const useStyles = makeStyles((theme) => ({
 const WeatherWidget = ({ weatherData }) => {
   const classes = useStyles();
 
-  const [currentWeather, setCurrentWeather] = React.useState({});
-  const [currentDay, setCurrentDay] = React.useState({});
-  const [daily, setDaily] = React.useState([]);
+  const [currentWeather, setCurrentWeather] = useState({});
+  const [currentDay, setCurrentDay] = useState({});
+  const [daily, setDaily] = useState([]);
 
   const week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const date = new Date();

@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import WeatherWidget from './components/WeatherWidget/WeatherWidget';
 import image from './images/weather-background.jpg';
 import { Grid, Paper } from '@material-ui/core';
 import axios from 'axios';
 
-const API_URL = 'https://api.openweathermap.org/data/2.5/onecall?lat=50.4333&lon=30.5167&exclude=minutely,hourly&appid=e7c594ddf234f6118da8b7460df04a79&units=metric';
 const useStyles = makeStyles((theme) => ({
   app: {
     position: "absolute",
@@ -19,10 +18,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center center",
     backgroundImage: `url(${image})`,
     fontFamily: 'Georgia',
-
-    // [theme.breakpoints.down('xs')]: {
-    //   objectFit: 'fill'
-    // },
   },
   weatherWidgetBody: {
     maxWidth: 1000,
@@ -43,10 +38,10 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
-  const [data, setDate] = React.useState({})
+  const [data, setDate] = useState({})
 
   useEffect(() => {
-    axios.get(API_URL)
+    axios.get(process.env.REACT_APP_API_URL)
       .then(res => {
         setDate(res.data);
       })
